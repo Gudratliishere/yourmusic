@@ -1,0 +1,98 @@
+.edit-music-container {
+    background-image: url(../image/edit_music_background.jpg);
+    background-size: cover;
+}
+
+.blur {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+}
+
+.music {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    width: 70%;
+    height: 70%;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.music form {
+    display: flex;
+    flex-direction: column;
+}
+
+.music input[type="text"] {
+    height: 35px;
+    border: 0;
+    border-radius: 15px;
+    padding-left: 15px;
+}
+
+.music input[type="text"]:focus {
+    outline: none;
+}
+
+#music {
+    display: none;
+}
+
+.music label {
+    margin-top: 20px;
+    background-color: rgb(167, 7, 7);
+    color: white;
+    height: 30px;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.music label:hover {
+    cursor: pointer;
+    background-color: rgb(116, 5, 5);
+}
+
+#fileUploadMessage {
+    visibility: hidden;
+    color: green;
+    text-align: center;
+    margin-top: 15px;
+}
+
+textarea {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.submit {
+    display: flex;
+}
+
+.music input[type="submit"] {
+    margin-top: 10px;
+    margin-left: auto;
+    width: 80px;
+    height: 30px;
+    border: 0;
+    border-radius: 20px;
+    background-color: rgb(255, 102, 0);
+    color: white;
+    transition: background 0.3s;
+}
+
+.music input[type="submit"]:hover {
+    background-color: rgb(139, 56, 1);
+}

@@ -1,0 +1,84 @@
+.musics-container {
+    background-image: url(../image/musics_background.jpg);
+    background-size: cover;
+    display: flex;
+    height: 120vh;
+}
+
+.blur {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    height: 120vh;
+    width: 100%;
+}
+
+.musics {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    height: 90%;
+    padding: 10px;
+    margin: 30px;
+}
+
+.musics h2 {
+    padding-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.row {
+    display: flex;
+    border: 1px solid black;
+    transition: background 0.5s;
+}
+
+.row:hover {
+    background-color: rgb(186, 178, 232);
+    cursor: pointer
+}
+
+.music-logo {
+    width: 40px;
+    flex-basis: 5%;
+}
+
+.music-name {
+    flex-basis: 80%;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.rating {
+    flex-basis: 15%;
+    padding-top: 20px;
+}
+
+.rating img {
+    width: 15px;
+}
+
+.paging {
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    margin-left: 30px;
+}
+
+.paging span {
+    border: 1px solid black;
+    padding: 1px 5px;
+}
+
+.paging span:hover {
+    border-color: rgb(122, 122, 122);
+    color: rgb(122, 122, 122);
+    cursor: pointer;
+}
+
+.row span {
+    margin: 20px;
+}

@@ -1,0 +1,26 @@
+.about-container {
+    background-image: linear-gradient(to right, rgb(245, 176, 173), rgb(179, 230, 221));
+}
+
+.paragraph {
+    padding: 50px 100px;
+}
+
+h4 {
+    color: rgb(88, 88, 88);
+    font-style: italic;
+}
+
+p,
+h4 {
+    margin-top: 10px;
+}
+
+h3 {
+    padding-top: 50px;
+}
+
+img {
+    width: 40px;
+    margin-left: 10px;
+}
