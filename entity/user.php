@@ -6,7 +6,9 @@
         public $email;
         public $phone;
         public $password;
-        public $rating;
+        public $photo;
+        public $rate;
+        public $rate_count;
         public $shared_musics;
         public $status;
     }

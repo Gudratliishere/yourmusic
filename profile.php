@@ -15,6 +15,14 @@
     <?php include 'header.php' ?>
     <div class="container profile-container">
         <div class="profile-card">
+            <?php
+            include 'dao/user_dao.php';
+            include 'entity/user.php';
+            $dao = new UserDao();
+            $user = $dao->find_user_by_id(34);
+            echo '<img src = "data:image/jpg;base64,' . base64_encode($user->photo) . '" 
+            id="pp"/>';
+            ?>
             <h1>Name <br>Surname</h1>
             <img src="image/star.png" alt="">
             <img src="image/star.png" alt="">

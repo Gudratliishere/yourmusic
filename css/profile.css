@@ -26,6 +26,12 @@
     display: block;
 }
 
+#pp {
+    width: 200px;
+    border: 1px solid #555555;
+    border-radius: 30px;
+}
+
 .last-posts {
     width: 60%;
     height: 68%;

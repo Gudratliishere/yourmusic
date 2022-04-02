@@ -29,6 +29,7 @@
                 `rate_count` int NULL DEFAULT NULL,
                 `shared_musics` int NULL DEFAULT NULL,
                 `status` int NULL DEFAULT 0,
+                `photo` blob NULL,
                 PRIMARY KEY (`id`) USING BTREE
               ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
               $this->run_query($query);
@@ -67,4 +68,3 @@
               $this->run_query($query);
         }
     }
-?>
