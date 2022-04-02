@@ -1,6 +1,5 @@
 <?php
-    // Still bug exists, Code doesn't create tables
-    function createTables() 
+    function create_tables() 
     {
         $creater = new TableCreater();
         $creater->create_user_table();
@@ -31,9 +30,7 @@
                 `shared_musics` int NULL DEFAULT NULL,
                 `status` int NULL DEFAULT 0,
                 PRIMARY KEY (`id`) USING BTREE
-              ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-              
-              SET FOREIGN_KEY_CHECKS = 1;";
+              ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
               $this->run_query($query);
         }
 
@@ -50,9 +47,7 @@
                 PRIMARY KEY (`id`) USING BTREE,
                 INDEX `user`(`user`) USING BTREE,
                 CONSTRAINT `music_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-              ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-              
-              SET FOREIGN_KEY_CHECKS = 1;";
+              ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
               $this->run_query($query);
         }
 
@@ -68,9 +63,7 @@
                 INDEX `music`(`music`) USING BTREE,
                 CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
                 CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`music`) REFERENCES `music` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-              ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-              
-              SET FOREIGN_KEY_CHECKS = 1;";
+              ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
               $this->run_query($query);
         }
     }
