@@ -117,6 +117,27 @@ class UserDao
         return $user;
     }
 
+    public function find_user_login_by_email ($email)
+    {
+        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+
+        $query = "select id, password, status from user where email = ?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if (!$row)
+            return null;
+
+        $user = new User();
+        $user->id = $row['id'];
+        $user->password = $row['password'];
+        $user->status = $row['status'];
+        return $user;
+    }
+
     public function email_exists($email)
     {
         $con = mysqli_connect("localhost", "root", "2002", "yourmusic");

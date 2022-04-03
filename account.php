@@ -10,7 +10,13 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'header.php';
+    $code = $_GET['code'];
+    session_start();
+    if ($_SESSION['id'])
+        header('Location: profile.php');
+    ?>
+
     <div class="container account-container">
         <div class="blur">
 
@@ -21,16 +27,34 @@
                     <hr id="Indicator">
                 </div>
 
-                <form id="LoginForm">
-                    <input type="email" placeholder="E-mail" required>
-                    <input type="password" placeholder="Password" id="LPassword" required>
+                <form id="LoginForm" method="post" action="doLogin.php">
+                    <input type="email" placeholder="E-mail" required name="email">
+                    <input type="password" placeholder="Password" id="LPassword" required name="password">
 
                     <div class="show-pass">
                         <input type="checkbox" id="LShowPass">
                         <label for="LShowPass" id="ShowPassText">Show</label>
                     </div>
 
-                    <label id="LMessage">Message will be shown here!</label>
+                    <label id="LMessage" style="display:<?php echo ($code) ? 'block' : 'none';?>">
+                        <?php 
+                            switch ($code)
+                            {
+                                case 1: 
+                                    echo 'Something is wrong, please try again or contact us!'; 
+                                    break;
+                                case 2: 
+                                    echo 'User not found, maybe you have to register?'; 
+                                    break;
+                                case 3: 
+                                    echo 'Password is wrong, try again!'; 
+                                    break;
+                                case 4: 
+                                    echo 'Your account is blocked :(<br>If you think it is mistake, contact us!'; 
+                                    break; 
+                            }
+                        ?>
+                    </label>
                     <button type="submit" class="btn">Login</button>
                     <a href="#">Forget password?</a>
                 </form>

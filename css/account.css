@@ -127,5 +127,6 @@ form a {
 
 #LMessage {
     font-size: 13px;
+    color: red;
     display: none;
 }

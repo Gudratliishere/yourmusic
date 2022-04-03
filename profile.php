@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!$_SESSION['id'])
+    header('Location: account.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +18,7 @@
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'header.php';?>
     <div class="container profile-container">
         <div class="profile-card">
             <?php
@@ -30,6 +36,7 @@
             <img src="image/star-half.png" alt="">
             <img src="image/star-empty.png" alt="">
             <span>Shared musics: 56</span>
+            <button class="logout" id="logout">Log out</button>
         </div>
         <div class="last-posts">
             <h2>Last musics</h2>
@@ -152,3 +159,5 @@
 </body>
 
 </html>
+
+<script src="js/profile.js"></script>

@@ -48,7 +48,14 @@ create_tables();
 		<li><a href="/yourmusic">Home</a></li>
 		<li><a href="/yourmusic/musics.php">Musics</a></li>
 		<li><a href="/yourmusic/about.php">About</a></li>
-		<li><a href="/yourmusic/account.php">Account</a></li>
-		<li><a href="/yourmusic/profile.php">You</a></li>
+		<?php
+		session_start();
+		if ($_SESSION['id'])
+			echo '<li><a href="/yourmusic/profile.php">You</a></li>';
+		else
+			echo '<li><a href="/yourmusic/account.php">Account</a></li>';
+		?>
+
+
 	</ul>
 </div>
