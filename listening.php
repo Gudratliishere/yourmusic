@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'private/header.php' ?>
     <div class="container listening-container">
         <div class="blur">
             <div class="music">
@@ -32,9 +32,9 @@
                     <div id="waveform" class="wave"></div>
                     <div class="music-info">
                         <div class="controls">
-                            <img src="image/play_button.png" id="playButton">
-                            <img src="image/stop_button.png" id="stopButton">
-                            <img src="image/volume_up.png" id="volumeButton">
+                            <img src="image/play_button.png" id="playButton" alt="Play">
+                            <img src="image/stop_button.png" id="stopButton" alt="Pause">
+                            <img src="image/volume_up.png" id="volumeButton" alt="Volume">
                         </div>
                         <div class="time" id="time"></div>
                     </div>

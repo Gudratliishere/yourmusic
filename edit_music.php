@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'private/header.php' ?>
     <div class="container edit-music-container">
         <div class="blur">
             <div class="music">

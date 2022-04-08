@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'private/header.php' ?>
     <div class="container about-container">
         <div class="paragraph">
             <h1>Your Music</h1>

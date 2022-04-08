@@ -7,4 +7,3 @@
         public $user;
         public $publish_date;
     }
-?>

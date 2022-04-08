@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include 'header.php';
+    <?php include 'private/header.php';
     $code = $_GET['code'];
     session_start();
     if ($_SESSION['id'])
@@ -27,7 +27,7 @@
                     <hr id="Indicator">
                 </div>
 
-                <form id="LoginForm" method="post" action="doLogin.php">
+                <form id="LoginForm" method="post" action="private/do_login.php">
                     <input type="email" placeholder="E-mail" required name="email">
                     <input type="password" placeholder="Password" id="LPassword" required name="password">
 
@@ -36,7 +36,8 @@
                         <label for="LShowPass" id="ShowPassText">Show</label>
                     </div>
 
-                    <label id="LMessage" style="display:<?php echo ($code) ? 'block' : 'none';?>">
+                    <label id="LMessage" style="display:<?php echo ($code) ? 'block' : 'none';?>;
+                            color: <?php echo ($code == 5) ? 'green' : 'red'; ?>">
                         <?php 
                             switch ($code)
                             {
@@ -51,12 +52,15 @@
                                     break;
                                 case 4: 
                                     echo 'Your account is blocked :(<br>If you think it is mistake, contact us!'; 
-                                    break; 
+                                    break;
+                                case 5:
+                                    echo 'Password successfully changed!';
+                                    break;
                             }
                         ?>
                     </label>
                     <button type="submit" class="btn">Login</button>
-                    <a href="#">Forget password?</a>
+                    <a href="forget_password.php">Forget password?</a>
                 </form>
 
                 <form id="RegisterForm" onsubmit="return verifyPassword()">

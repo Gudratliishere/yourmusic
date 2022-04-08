@@ -24,6 +24,10 @@
     background: #563434;
 }
 
+input:focus {
+    outline: none;
+}
+
 .form-container {
     top: 50px;
     background: #ffffff;

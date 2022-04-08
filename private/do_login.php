@@ -1,7 +1,7 @@
 <?php
 
-include 'dao/user_dao.php';
-include 'entity/user.php';
+include '../dao/user_dao.php';
+include '../entity/user.php';
 
 if (isset_fields()) {
     $user = user_exists();
@@ -15,7 +15,7 @@ function is_user_active($user)
     if ($user->status == 1) {
         session_start();
         $_SESSION['id'] = $user->id;
-        header("Location: profile.php");
+        header("Location: ../profile.php");
     } else
         redirect_login(4);
 }
@@ -47,5 +47,5 @@ function user_exists()
 
 function redirect_login($code)
 {
-    header("Location: account.php?code=$code");
+    header("Location: ../account.php?code=$code");
 }

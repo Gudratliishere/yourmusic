@@ -11,6 +11,8 @@
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-card h1 {
@@ -95,4 +97,40 @@
     border-color: rgb(122, 122, 122);
     color: rgb(122, 122, 122);
     cursor: pointer;
+}
+
+.logout {
+    margin-top: auto;
+    margin-bottom: 20px;
+    width: 130px;
+    height: 35px;
+    border-radius: 18px;
+    border: 0;
+    background: #001cff;
+    color: white;
+    transition: background 0.3s;
+}
+
+.logout:hover {
+    background: #0072ff;
+}
+
+.profile-photo {
+    display: flex;
+}
+
+.profile-photo a{
+    text-decoration: none;
+    background-color: #ff025d;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-bottom: auto;
+    margin-right: 0;
+    margin-left: auto;
+    transition: background 0.2s;
+}
+
+.profile-photo a:hover {
+    background-color: #ff568f;
 }
