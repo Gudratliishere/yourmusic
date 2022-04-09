@@ -9,7 +9,6 @@ create_tables();
 	<?php
 
 
-
 	// function compress($source, $quality)
 	// {
 

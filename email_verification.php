@@ -15,30 +15,27 @@ include 'private/header.php';
 session_start();
 if ($_SESSION['id'])
     header('Location: profile.php');
+$code = $_GET['code'];
 $email = $_POST['email'];
-$sent = $_POST['sent'];
+$sent = $_GET['sent'];
 ?>
 
 <div class="container verification-container">
-    <div class="form-card"
-         style="height: <?php echo ($sent) ? '300' : '150'; ?>px">
+    <div class="form-card">
         <form action="private/send_email.php" method="post" class="send-email">
-            <span class="send-email-message">Send verification code to email:</span>
-            <input type="text" name="email" id="email" placeholder="Email" class="email" required
-            <?php if ($email)
-            {
-                echo 'disabled ';
-                echo 'value="'.$email.'"';
-            } ?>>
-            <input type="submit" value="Send" class="send">
-        </form>
-        <?php if ($sent) { ?>
-            <form action="validate.php" method="post" class="confirm">
-                <span class="confirm-message">Confirm code sent to your email.</span>
-                <input type="text" name="password" id="password" class="password">
-                <input type="submit" value="Confirm" class="confirm-code">
-            </form>
-        <?php } ?>
+            <?php if ($code == 1) echo '<span>Verification link is not valid, please send email again!</span>';
+            elseif ($sent) echo '<span>Please check your email!</span>';
+            if (!$sent) {
+                ?>
+
+                <span class="send-email-message">Send verification to email:</span>
+                <input type="text" name="email" id="email" placeholder="Email" class="email" required
+                    <?php if ($email) {
+                        echo 'disabled ';
+                        echo 'value="' . $email . '"';
+                    } ?>>
+                <input type="submit" value="Send" class="send">
+            <?php } ?>
     </div>
 </div>
 </body>

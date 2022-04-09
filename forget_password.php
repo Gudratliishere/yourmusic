@@ -13,7 +13,7 @@
 <?php include 'private/header.php';
 $code = $_GET['code'];
 session_start();
-if ($_SESSION['id'])
+if ($_SESSION['id'] || !$_SESSION['verified'])
     header('Location: profile.php');
 ?>
 <div class="container forget-password-container">

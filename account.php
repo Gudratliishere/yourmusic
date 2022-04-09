@@ -37,7 +37,7 @@
                     </div>
 
                     <label id="LMessage" style="display:<?php echo ($code) ? 'block' : 'none';?>;
-                            color: <?php echo ($code == 5) ? 'green' : 'red'; ?>">
+                            color: <?php echo ($code == 5 || $code == 6) ? 'green' : 'red'; ?>">
                         <?php 
                             switch ($code)
                             {
@@ -56,11 +56,14 @@
                                 case 5:
                                     echo 'Password successfully changed!';
                                     break;
+                                case 6:
+                                    echo 'Successfully registered! Now you can log in!';
+                                    break;
                             }
                         ?>
                     </label>
                     <button type="submit" class="btn">Login</button>
-                    <a href="forget_password.php">Forget password?</a>
+                    <a href="email_verification.php">Forget password?</a>
                 </form>
 
                 <form id="RegisterForm" onsubmit="return verifyPassword()">
