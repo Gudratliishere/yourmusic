@@ -8,7 +8,6 @@ create_tables();
 <div class="navbar">
 	<?php
 
-
 	// function compress($source, $quality)
 	// {
 

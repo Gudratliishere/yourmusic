@@ -8,11 +8,13 @@ function create_tables()
 
 }
 
+include "connection.php";
+
 class TableCreater
 {
     function run_query($query)
     {
-        include "connection.php";
+        $con = Connection::get_connection();
         $con->query($query);
     }
 
@@ -79,5 +81,5 @@ class TableCreater
                   CONSTRAINT `old_password_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
                 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
         $this->run_query($query);
-        }
+    }
 }

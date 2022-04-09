@@ -4,7 +4,7 @@ class UserDao
 {
     public function add_user($user)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "insert into user (name, surname, email, phone, password, photo) values(?, ?, ?, ?, ?, ?);";
         $stmt = $con->prepare($query);
@@ -32,7 +32,7 @@ class UserDao
 
     public function update_user($user)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "update user set name = ?, surname = ?, password = ?, phone = ?, photo = ? where id = ?";
         $stmt = $con->prepare($query);
@@ -62,7 +62,7 @@ class UserDao
 
     private function change_status($status, $id)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "update user set status = ? where id = ?";
         $stmt = $con->prepare($query);
@@ -74,7 +74,7 @@ class UserDao
 
     public function find_user_by_id($id)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "select * from user where id = ?";
         $stmt = $con->prepare($query);
@@ -88,7 +88,7 @@ class UserDao
 
     public function find_user_by_email($email)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "select * from user where email = ?";
         $stmt = $con->prepare($query);
@@ -119,7 +119,7 @@ class UserDao
 
     public function find_user_login_by_email ($email)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "select id, password, status from user where email = ?";
         $stmt = $con->prepare($query);
@@ -140,7 +140,7 @@ class UserDao
 
     public function update_user_login ($user)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "update user set password = ? where id = ?";
         $stmt = $con->prepare($query);
@@ -155,7 +155,7 @@ class UserDao
 
     public function email_exists($email)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "select count(id) from user where email = ?";
         $stmt = $con->prepare($query);

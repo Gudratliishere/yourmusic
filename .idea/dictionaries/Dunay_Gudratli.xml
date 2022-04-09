@@ -2,6 +2,10 @@
   <dictionary name="Dunay Gudratli">
     <words>
       <w>cpassword</w>
+      <w>creater</w>
+      <w>dbhost</w>
+      <w>dbpassword</w>
+      <w>dbuser</w>
       <w>emptystar</w>
       <w>gmail</w>
       <w>navbar</w>
