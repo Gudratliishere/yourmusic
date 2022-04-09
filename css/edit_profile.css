@@ -1,0 +1,134 @@
+.edit-profile-container {
+    background-image: url("../image/edit_profile_background.jpg");
+    background-size: cover;
+}
+
+.blur {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    margin-top: 5%;
+    border-radius: 30px;
+    padding: 20px;
+    height: 500px;
+}
+
+.profile-info {
+    display: flex;
+}
+
+.profile-info input[type=file] {
+    display: none;
+}
+
+.profile-info img {
+    width: 200px;
+    border-radius: 30px;
+    border: 1px solid #b30000;
+    margin-right: 20px;
+}
+
+.name-surname {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-surname input, .password {
+    width: 200px;
+    height: 15px;
+    padding: 10px;
+    border-radius: 20px;
+    border:1px solid #ff0047;
+}
+
+.name {
+    margin-top: auto;
+}
+
+.surname {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.name-surname input:focus, .password {
+    outline: none;
+}
+
+.divider {
+    margin: 20px;
+}
+
+.change-pass {
+    margin-bottom: 15px;
+}
+
+.password-change {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.password-change input {
+    margin-bottom: 10px;
+}
+
+.submit {
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    border: 0;
+    background-color: #ff006a;
+    color: white;
+    transition: background 0.3s;
+}
+
+.submit:hover {
+    background-color: #ff5c98;
+}
+
+.name, .surname {
+    display: flex;
+    flex-direction: column;
+}
+
+.name label {
+    margin-bottom: 5px;
+}
+
+.password-change span {
+    margin-bottom: 5px;
+}
+
+.change-pass-inputs {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.change-password {
+    display: none;
+}
+
+.change-pass-btn {
+    background-color: #b30000;
+    display: block;
+    width: 200px;
+    height: 25px;
+    text-align: center;
+    padding-top: 5px;
+    color: white;
+    border-radius: 15px;
+    transition:  background 0.3s;
+}
+
+.change-pass-btn:hover {
+    background-color: #b34341;
+}
