@@ -15,7 +15,7 @@
     <div class="blur">
         <form action="private/do_edit.php" method="post" onsubmit="return checkPasswordMatch()">
             <div class="profile-info">
-                <img src="image/account_background.jpg" alt="Profile photo">
+                <img src="image/account_background.jpg" alt="Profile photo" id="profile-img">
                 <input type="file" name="profile-photo" id="profile-photo">
                 <div class="name-surname">
                     <div class="name">

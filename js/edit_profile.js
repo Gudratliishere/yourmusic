@@ -5,6 +5,8 @@ const newCPassword = document.getElementById('new-cpassword');
 const message = document.getElementById('message');
 const changePass = document.getElementById('change-password');
 const changePassInputs = document.getElementById('change-pass-inputs');
+const profileImg = document.getElementById('profile-img');
+const profilePhoto = document.getElementById('profile-photo');
 
 show.onchange = function () {
     if (show.checked) {
@@ -42,4 +44,8 @@ changePass.onchange = function () {
         changePassInputs.style.display = "flex";
     } else
         changePassInputs.style.display = "none";
+}
+
+profileImg.onclick = function () {
+    profilePhoto.click();
 }
