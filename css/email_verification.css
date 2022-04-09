@@ -23,6 +23,11 @@
     align-items: center;
 }
 
+.send-email span {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 .send-email-message{
     margin-top: 5px;
 }

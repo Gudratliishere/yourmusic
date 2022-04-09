@@ -1,5 +1,6 @@
 .account-container {
     background-image: url(../image/account_background.jpg);
+    background-size: cover;
 }
 
 .blur {

@@ -23,8 +23,9 @@ $sent = $_GET['sent'];
 <div class="container verification-container">
     <div class="form-card">
         <form action="private/send_email.php" method="post" class="send-email">
-            <?php if ($code == 1) echo '<span>Verification link is not valid, please send email again!</span>';
-            elseif ($sent) echo '<span>Please check your email!</span>';
+            <?php if ($code == 1)
+                echo '<span style="color: red">Verification link is not valid, please send email again!</span>';
+            elseif ($sent) echo '<span style="color: green">Please check your email!</span>';
             if (!$sent) {
                 ?>
 

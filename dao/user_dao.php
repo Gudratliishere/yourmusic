@@ -138,6 +138,21 @@ class UserDao
         return $user;
     }
 
+    public function update_user_login ($user)
+    {
+        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+
+        $query = "update user set password = ? where id = ?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param(
+            "si",
+            $user->password,
+            $user->id
+        );
+        $stmt->execute();
+        $stmt->close();
+    }
+
     public function email_exists($email)
     {
         $con = mysqli_connect("localhost", "root", "2002", "yourmusic");

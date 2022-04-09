@@ -3,17 +3,21 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'libs/PHPMailer-master/src/Exception.php';
-require 'libs/PHPMailer-master/src/PHPMailer.php';
-require 'libs/PHPMailer-master/src/SMTP.php';
+require '../libs/PHPMailer-master/src/Exception.php';
+require '../libs/PHPMailer-master/src/PHPMailer.php';
+require '../libs/PHPMailer-master/src/SMTP.php';
 
-$emails = array();
-
-function generate_activation_link($email)
+function generate_activation_code()
 {
     $code = bin2hex(random_bytes(16));
 
-    $link = "http://localhost/yourmusic/activate.php?email=$email&activation_code=$code";
+    return $code;
+}
+
+function generate_activation_link($email, $code)
+{
+    $encrypted_email = openssl_encrypt($email, "AES-128-CTR", "yourmusic", 0, "1234567891011121");
+    $link = "http://localhost/yourmusic/activate.php?email=$encrypted_email&activation_code=$code";
 
     return $link;
 }
@@ -39,12 +43,14 @@ function send_mail($to)
         //Content
         $mail->isHTML(true);
         $mail->Subject = 'Your Music | Email verification';
-        $link = generate_activation_link($to);
+        $code = generate_activation_code();
+        $link = generate_activation_link($to, $code);
         $mail->Body = "Hi,<br>Please click the following link to confirm your email:<br>$link<br><br>
         <b>Note:</b><br>If you did not any confirmation, please contact us!";
 
-        //Store email and activation code in RAM
-        $emails[$to] = $link;
+        //Store email and activation code in SESSION
+        session_start();
+        $_SESSION['verification'] = $code;
 
         $mail->send();
         return true;
