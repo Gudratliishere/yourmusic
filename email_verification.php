@@ -16,7 +16,7 @@ session_start();
 if ($_SESSION['id'])
     header('Location: profile.php');
 $code = $_GET['code'];
-$email = $_POST['email'];
+$email = $_SESSION['email'];
 $sent = $_GET['sent'];
 ?>
 
@@ -32,7 +32,6 @@ $sent = $_GET['sent'];
                 <span class="send-email-message">Send verification to email:</span>
                 <input type="text" name="email" id="email" placeholder="Email" class="email" required
                     <?php if ($email) {
-                        echo 'disabled ';
                         echo 'value="' . $email . '"';
                     } ?>>
                 <input type="submit" value="Send" class="send">

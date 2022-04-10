@@ -18,18 +18,23 @@ $user = $dao->find_user_by_id($_SESSION['id']);
 ?>
 <div class="container edit-profile-container">
     <div class="blur">
-        <form action="private/do_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkPasswordMatch()">
+        <form action="private/do_edit.php" method="post" enctype="multipart/form-data"
+              onsubmit="return checkPasswordMatch()">
             <div class="profile-info">
-                <img src="data:image/jpg;base64,<?=base64_encode($user->photo)?>" alt="Profile photo" id="profile-img">
-                <input type="file" name="profile-photo" id="profile-photo" src="data:image/jpg;base64,<?=base64_encode($user->photo)?>">
+                <img src="<?php if ($user->photo == null || $user->photo == '') echo 'image/default_pp.jpg';
+                else echo 'data:image/jpg;base64,' . base64_encode($user->photo); ?>" alt="Profile photo"
+                     id="profile-img">
+                <input type="file" name="profile-photo" id="profile-photo"
+                       src="data:image/jpg;base64,<?= base64_encode($user->photo) ?>">
                 <div class="name-surname">
                     <div class="name">
                         <label for="name">Name:</label>
-                        <input type="text" name="name" class="name" id="name" value="<?=$user->name?>" required>
+                        <input type="text" name="name" class="name" id="name" value="<?= $user->name ?>" required>
                     </div>
                     <div class="surname">
                         <label for="surname">Surname:</label>
-                        <input type="text" name="surname" class="surname" id="surname" value="<?=$user->surname?>" required>
+                        <input type="text" name="surname" class="surname" id="surname" value="<?= $user->surname ?>"
+                               required>
                     </div>
                 </div>
             </div>
@@ -54,9 +59,13 @@ $user = $dao->find_user_by_id($_SESSION['id']);
                 <span id="message" class="message">
                     <?php $code = $_GET['code'];
                     switch ($code) {
-                        case 1: echo 'Password is wrong!'; break;
-                        case 2: echo 'You entered used password, try another one!'; break;
-                    }?>
+                        case 1:
+                            echo 'Password is wrong!';
+                            break;
+                        case 2:
+                            echo 'You entered used password, try another one!';
+                            break;
+                    } ?>
                 </span>
                 <input type="submit" value="Save" class="submit">
             </div>

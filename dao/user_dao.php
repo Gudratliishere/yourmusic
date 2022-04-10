@@ -1,20 +1,20 @@
 <?php
 
 include '../database/connection.php';
+
 class UserDao
 {
     public function add_user($user)
     {
-        $con = Connection::get_connection();
+        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
 
-        $query = "insert into user (name, surname, email, phone, password, photo) values(?, ?, ?, ?, ?, ?);";
+        $query = "insert into user (name, surname, email, password, photo) values(?, ?, ?, ?, ?);";
         $stmt = $con->prepare($query);
         $stmt->bind_param(
             "sssss",
             $user->name,
             $user->surname,
             $user->email,
-            $user->phone,
             $user->password,
             $user->photo
         );
@@ -35,14 +35,13 @@ class UserDao
     {
         $con = Connection::get_connection();
 
-        $query = "update user set name = ?, surname = ?, password = ?, phone = ?, photo = ? where id = ?";
+        $query = "update user set name = ?, surname = ?, password = ?, photo = ? where id = ?";
         $stmt = $con->prepare($query);
         $stmt->bind_param(
-            "sssssi",
+            "ssssi",
             $user->name,
             $user->surname,
             $user->password,
-            $user->phone,
             $user->photo,
             $user->id
         );
@@ -107,7 +106,6 @@ class UserDao
         $user->name = $row['name'];
         $user->surname = $row['surname'];
         $user->email = $row['email'];
-        $user->phone = $row['phone'];
         $user->password = $row['password'];
         $user->photo = $row['photo'];
         $user->rate = $row['rate'];

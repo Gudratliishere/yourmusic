@@ -5,7 +5,7 @@ class OldPasswordDao
 {
     public function add($user, $password)
     {
-        $con = Connection::get_connection();
+        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
 
         $query = "insert into old_password (user, password) values (?, ?);";
         $stmt = $con->prepare($query);

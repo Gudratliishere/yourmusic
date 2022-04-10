@@ -21,10 +21,12 @@ $user = $dao->find_user_by_id($_SESSION['id']);
 $user->name = $name;
 $user->surname = $surname;
 
-$temp_file_path = '../temp/'.$filename;
-compress($profile_photo, 30);
-$user->photo = file_get_contents('../temp/'.$temp_file_path);
-unlink($temp_file_path);
+if ($profile_photo != '') {
+    $temp_file_path = '../temp/'.$filename;
+    compress($profile_photo, 30);
+    $user->photo = file_get_contents('../temp/'.$temp_file_path);
+    unlink($temp_file_path);
+}
 
 if ($change_password == true) {
     if (password_verify($old_password, $user->password)) {
@@ -40,9 +42,9 @@ if ($change_password == true) {
         header("Location: ../edit_profile.php?code=1");
         exit();
     }
+    $old_password_dao->add($user->id, $user->password);
 }
 
-$old_password_dao->add($user->id, $user->password);
 $dao->update_user($user);
 header("Location: ../profile.php");
 

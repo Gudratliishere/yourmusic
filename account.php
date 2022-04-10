@@ -11,7 +11,8 @@
 
 <body>
     <?php include 'private/header.php';
-    $code = $_GET['code'];
+    $code_login = $_GET['code_login'];
+    $code_register = $_GET['code_register'];
     session_start();
     if ($_SESSION['id'])
         header('Location: profile.php');
@@ -36,10 +37,10 @@
                         <label for="LShowPass" id="ShowPassText">Show</label>
                     </div>
 
-                    <label id="LMessage" style="display:<?php echo ($code) ? 'block' : 'none';?>;
-                            color: <?php echo ($code == 5 || $code == 6) ? 'green' : 'red'; ?>">
+                    <label id="LMessage" style="display:<?php echo ($code_login) ? 'block' : 'none';?>;
+                            color: <?php echo ($code_login == 5 || $code_login == 6) ? 'green' : 'red'; ?>">
                         <?php 
-                            switch ($code)
+                            switch ($code_login)
                             {
                                 case 1: 
                                     echo 'Something is wrong, please try again or contact us!'; 
@@ -66,12 +67,11 @@
                     <a href="email_verification.php">Forget password?</a>
                 </form>
 
-                <form id="RegisterForm" onsubmit="return verifyPassword()">
-                    <input type="text" placeholder="Name" required>
-                    <input type="text" placeholder="Surname" required>
-                    <input type="email" placeholder="E-mail" required>
-                    <input type="text" placeholder="Phone number" required>
-                    <input type="password" placeholder="Password" id="RPassword" required>
+                <form id="RegisterForm" action="private/do_register.php" method="post" onsubmit="return verifyPassword()">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="text" name="surname" placeholder="Surname" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <input type="password" name="password" placeholder="Password" id="RPassword" required>
                     <input type="password" placeholder="Confirm Password" id="RCPassword" required>
 
                     <div class="show-pass">
@@ -79,7 +79,13 @@
                         <label for="RShowPass" id="ShowPassText">Show</label>
                     </div>
 
-                    <label id="ErrorMessage">Password doesn't match!</label>
+                    <label id="ErrorMessage" style="display: <?php echo $code_register ? 'block' : 'none';?>">
+                        <?php
+                        switch ($code_register) {
+                            case 1: echo 'Already account exists with this email!'; break;
+                        }
+                        ?>
+                    </label>
                     <button type="submit" class="btn">Register</button>
                 </form>
             </div>

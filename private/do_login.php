@@ -47,6 +47,6 @@ function user_exists()
 
 function redirect_login($code)
 {
-    header("Location: ../account.php?code=$code");
+    header("Location: ../account.php?code_login=$code");
     exit();
 }

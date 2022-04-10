@@ -27,10 +27,10 @@ if (!$_SESSION['id'])
             include 'dao/user_dao.php';
             include 'entity/user.php';
             $dao = new UserDao();
-            $user = $dao->find_user_by_id(34);
-            echo '<img src = "data:image/jpg;base64,' . base64_encode($user->photo) . '" 
-            id="pp"/>';
+            $user = $dao->find_user_by_id($_SESSION['id']);
             ?>
+            <img src="<?php if ($user->photo == null || $user->photo == '') echo 'image/default_pp.jpg';
+            else echo 'data:image/jpg;base64,' . base64_encode($user->photo); ?>" alt="Profile photo" id="pp">
             <a href="edit_profile.php">Edit</a>
         </div>
         <h1><?= $user->name ?><br><?= $user->surname ?></h1>

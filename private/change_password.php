@@ -25,4 +25,4 @@ foreach ($array as $old_password) {
 $old_password_dao->add($user_obj->id, $user_obj->password);
 $user_dao->update_user_login($user_obj);
 
-header("Location: ../account.php?code=5");
+header("Location: ../account.php?code_login=5");
