@@ -1,5 +1,6 @@
 <?php
 
+include '../database/connection.php';
 class UserDao
 {
     public function add_user($user)
@@ -74,7 +75,6 @@ class UserDao
 
     public function find_user_by_id($id)
     {
-        include '../database/connection.php';
         $con = Connection::get_connection();
 
         $query = "select * from user where id = ?";

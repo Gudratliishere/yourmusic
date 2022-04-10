@@ -3,7 +3,7 @@
 
 class OldPasswordDao
 {
-    function add($user, $password)
+    public function add($user, $password)
     {
         $con = Connection::get_connection();
 
@@ -14,7 +14,7 @@ class OldPasswordDao
         $stmt->close();
     }
 
-    function get_old_passwords ($user) {
+    public function get_old_passwords ($user) {
         $con = Connection::get_connection();
 
         $query = "select * from old_password where user = ?;";

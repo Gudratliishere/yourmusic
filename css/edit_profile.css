@@ -132,3 +132,7 @@ form {
 .change-pass-btn:hover {
     background-color: #b34341;
 }
+
+.message {
+    color: red;
+}

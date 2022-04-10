@@ -26,14 +26,12 @@ function checkPasswordMatch () {
     if (oldPassword.value == '' || newCPassword.value == '' || newCPassword == '')
     {
         message.innerText = "Please fill fields!";
-        message.style.color = "red";
         return false;
     }
     if (newPassword.value != newCPassword.value)
     {
         newCPassword.style.border = "2px solid red";
         message.innerText = "Password doesn't match!";
-        message.style.color = "red";
         return false;
     } else
         return true;
@@ -48,4 +46,17 @@ changePass.onchange = function () {
 
 profileImg.onclick = function () {
     profilePhoto.click();
+}
+
+profilePhoto.onchange = function (evt) {
+    const tgt = evt.target || window.event.srcElement,
+        files = tgt.files;
+
+    if (FileReader && files && files.length) {
+        const fr = new FileReader();
+        fr.onload = function () {
+            profileImg.src = fr.result;
+        }
+        fr.readAsDataURL(files[0]);
+    }
 }

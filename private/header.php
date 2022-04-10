@@ -8,20 +8,20 @@ create_tables();
 <div class="navbar">
 	<?php
 
-	// function compress($source, $quality)
-	// {
-
-	// 	$info = getimagesize($source);
-
-	// 	if ($info['mime'] == 'image/jpeg')
-	// 		$image = imagecreatefromjpeg($source);
-	// 	elseif ($info['mime'] == 'image/png')
-	// 		$image = imagecreatefrompng($source);
-
-	// 	imagejpeg($image, $source, $quality);
-
-	// 	return $source;
-	// }
+//	 function compress($source, $quality)
+//	 {
+//
+//	 	$info = getimagesize($source);
+//
+//	 	if ($info['mime'] == 'image/jpeg')
+//	 		$image = imagecreatefromjpeg($source);
+//	 	elseif ($info['mime'] == 'image/png')
+//	 		$image = imagecreatefrompng($source);
+//
+//	 	imagejpeg($image, $source, $quality);
+//
+//	 	return $source;
+//	 }
 
 	// include 'dao/user_dao.php';
 	// include 'entity/user.php';
