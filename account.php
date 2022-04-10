@@ -38,7 +38,7 @@
                     </div>
 
                     <label id="LMessage" style="display:<?php echo ($code_login) ? 'block' : 'none';?>;
-                            color: <?php echo ($code_login == 5 || $code_login == 6) ? 'green' : 'red'; ?>">
+                            color: <?php echo ($code_login >= 5 && $code_login <= 7) ? 'green' : 'red'; ?>">
                         <?php 
                             switch ($code_login)
                             {
@@ -59,6 +59,12 @@
                                     break;
                                 case 6:
                                     echo 'Successfully registered! Now you can log in!';
+                                    break;
+                                case 7:
+                                    echo 'Successfully deleted account!';
+                                    break;
+                                case 8:
+                                    echo 'You have deleted this account. If you want to activate again, contact us!';
                                     break;
                             }
                         ?>

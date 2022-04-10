@@ -6,18 +6,27 @@ include '../entity/user.php';
 if (isset_fields()) {
     $user = user_exists();
     if ($user && password_match($user)) {
-        is_user_active($user);
+        if (is_user_active($user))
+            is_user_banned($user);
     }
 }
 
-function is_user_active($user)
+function is_user_banned($user)
 {
-    if ($user->status == 1) {
+    if ($user->banned == 0) {
         session_start();
         $_SESSION['id'] = $user->id;
         header("Location: ../profile.php");
     } else
         redirect_login(4);
+}
+
+function is_user_active($user)
+{
+    if ($user->status == 1) {
+        return true;
+    } else
+        redirect_login(8);
 }
 
 function password_match($user)

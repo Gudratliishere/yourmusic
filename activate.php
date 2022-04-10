@@ -8,12 +8,20 @@ if (isset($_GET['email']) && isset($_GET['activation_code']))
     $code = $_GET['activation_code'];
     if ($code == $_SESSION['verification'])
     {
+        include 'dao/user_dao.php';
+        include 'entity/user.php';
+        $dao = new UserDao();
+
+        if ($_SESSION['delete_account'] == true)
+        {
+            $dao->deactivate_user($_SESSION['id']);
+            session_destroy();
+            header("Location: account.php?code_login=7");
+            exit();
+        }
         $_SESSION['confirmed-user'] = $email;
         if ($_SESSION['register']) {
-            include 'dao/user_dao.php';
-            include 'entity/user.php';
             include 'dao/old_password_dao.php';
-            $dao = new UserDao();
             $user = unserialize($_SESSION['user']);
             $dao->add_user($user);
 

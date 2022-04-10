@@ -62,9 +62,31 @@ class UserDao
 
     private function change_status($status, $id)
     {
-        $con = Connection::get_connection();
+        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
 
         $query = "update user set status = ? where id = ?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("ii", $status, $id);
+
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function ban_user ($id)
+    {
+        $this->change_ban_status(1, $id);
+    }
+
+    public function allow_user ($id)
+    {
+        $this->change_ban_status(0, $id);
+    }
+
+    private function change_ban_status ($status, $id)
+    {
+        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+
+        $query = "update user set banned = ? where id = ?";
         $stmt = $con->prepare($query);
         $stmt->bind_param("ii", $status, $id);
 
@@ -112,15 +134,16 @@ class UserDao
         $user->rate_count = $row['rate_count'];
         $user->shared_musics = $row['shared_musics'];
         $user->status = $row['status'];
+        $user->banned = $row['banned'];
 
         return $user;
     }
 
-    public function find_user_login_by_email ($email)
+    public function find_user_login_by_email($email)
     {
         $con = Connection::get_connection();
 
-        $query = "select id, email, password, status from user where email = ?";
+        $query = "select id, email, password, status, banned from user where email = ?";
         $stmt = $con->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -133,11 +156,11 @@ class UserDao
         return $this->fill_user_login($row);
     }
 
-    public function find_user_login_by_id ($id)
+    public function find_user_login_by_id($id)
     {
-        $con = Connection::get_connection();
+        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
 
-        $query = "select id, email, password, status from user where id = ?";
+        $query = "select id, email, password, status, banned from user where id = ?";
         $stmt = $con->prepare($query);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -150,17 +173,18 @@ class UserDao
         return $this->fill_user_login($row);
     }
 
-    private function fill_user_login ($row)
+    private function fill_user_login($row)
     {
         $user = new User();
         $user->id = $row['id'];
         $user->email = $row['email'];
         $user->password = $row['password'];
         $user->status = $row['status'];
+        $user->banned = $row['banned'];
         return $user;
     }
 
-    public function update_user_login ($user)
+    public function update_user_login($user)
     {
         $con = Connection::get_connection();
 

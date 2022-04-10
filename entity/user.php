@@ -10,5 +10,6 @@
         public $rate_count;
         public $shared_musics;
         public $status;
+        public $banned;
     }
 ?>
