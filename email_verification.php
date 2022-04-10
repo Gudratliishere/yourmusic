@@ -13,7 +13,7 @@
 <?php
 include 'private/header.php';
 session_start();
-if ($_SESSION['id'])
+if ($_SESSION['id'] && !$_SESSION['delete_account'])
     header('Location: profile.php');
 $code = $_GET['code'];
 $email = $_SESSION['email'];

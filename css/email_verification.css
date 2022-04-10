@@ -28,27 +28,27 @@
     text-align: center;
 }
 
-.send-email-message{
+.send-email-message {
     margin-top: 5px;
 }
 
-.email, .password {
+.email {
     margin-top: 5px;
     height: 30px;
-    width: 80%;
+    width: 230px;
     border: 1px solid #ff508c;
     border-radius: 15px;
     padding-left: 10px;
 }
 
-.email:focus, .password:focus{
+.email:focus {
     outline: none;
     border: 2px solid #ff2a75;
 }
 
 .send, .confirm-code {
     margin-top: 10px;
-    width: 80%;
+    width: 70%;
     height: 30px;
     border: none;
     background-color: #ff0d94;

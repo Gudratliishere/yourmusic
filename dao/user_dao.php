@@ -120,7 +120,7 @@ class UserDao
     {
         $con = Connection::get_connection();
 
-        $query = "select id, password, status from user where email = ?";
+        $query = "select id, email, password, status from user where email = ?";
         $stmt = $con->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -130,8 +130,31 @@ class UserDao
         if (!$row)
             return null;
 
+        return $this->fill_user_login($row);
+    }
+
+    public function find_user_login_by_id ($id)
+    {
+        $con = Connection::get_connection();
+
+        $query = "select id, email, password, status from user where id = ?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if (!$row)
+            return null;
+
+        return $this->fill_user_login($row);
+    }
+
+    private function fill_user_login ($row)
+    {
         $user = new User();
         $user->id = $row['id'];
+        $user->email = $row['email'];
         $user->password = $row['password'];
         $user->status = $row['status'];
         return $user;

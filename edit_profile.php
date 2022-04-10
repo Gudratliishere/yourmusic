@@ -68,6 +68,7 @@ $user = $dao->find_user_by_id($_SESSION['id']);
                     } ?>
                 </span>
                 <input type="submit" value="Save" class="submit">
+                <label class="delete-account" id="delete-account">Delete account</label>
             </div>
         </form>
     </div>

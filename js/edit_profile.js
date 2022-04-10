@@ -7,6 +7,7 @@ const changePass = document.getElementById('change-password');
 const changePassInputs = document.getElementById('change-pass-inputs');
 const profileImg = document.getElementById('profile-img');
 const profilePhoto = document.getElementById('profile-photo');
+const deleteAccount = document.getElementById('delete-account');
 
 show.onchange = function () {
     if (show.checked) {
@@ -59,4 +60,9 @@ profilePhoto.onchange = function (evt) {
         }
         fr.readAsDataURL(files[0]);
     }
+}
+
+deleteAccount.onclick = function () {
+    if (confirm("Are you sure to delete account? You have to confirm your email for deleting account!"))
+        window.location.replace("delete_account.php");
 }

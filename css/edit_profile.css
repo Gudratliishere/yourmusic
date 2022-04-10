@@ -18,7 +18,7 @@ form {
     margin-top: 5%;
     border-radius: 30px;
     padding: 20px;
-    height: 500px;
+    height: 560px;
 }
 
 .profile-info {
@@ -92,6 +92,7 @@ form {
 
 .submit:hover {
     background-color: #ff5c98;
+    cursor: pointer;
 }
 
 .name, .surname {
@@ -131,8 +132,29 @@ form {
 
 .change-pass-btn:hover {
     background-color: #b34341;
+    cursor: pointer;
 }
 
 .message {
     color: red;
+}
+
+.delete-account {
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+    width: 200px;
+    height: 25px;
+    border-radius: 15px;
+    border: 0;
+    background-color: #ff1b00;
+    color: white;
+    font-size: 15px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.delete-account:hover {
+    background-color: #ac0300;
+    cursor: pointer;
 }
