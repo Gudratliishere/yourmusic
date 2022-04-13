@@ -74,16 +74,17 @@ if (isset($_POST['email'])) {
 
 function get_user_name($email)
 {
-    global $user;
-    if ($_SESSION['register'] == true)
-        $user = unserialize($_SESSION['user']);
-    else {
+    session_start();
+    global $user_name;
+    if ($_SESSION['register'] == true) {
+        $user_name = $_SESSION['name'];
+    } else {
         include '../dao/user_dao.php';
         include '../entity/user.php';
         $dao = new UserDao();
-        $user = $dao->find_user_by_email($email);
+        $user_name = $dao->find_user_by_email($email)->name;
     }
-    return $user->name;
+    return $user_name;
 }
 
 function generate_delete_account_mail_body($link, $name)

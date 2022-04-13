@@ -78,6 +78,18 @@
                     <input type="text" name="surname" placeholder="Surname" required>
                     <input type="email" name="email" placeholder="E-mail" required>
                     <input type="password" name="password" placeholder="Password" id="RPassword" required>
+                    <div class="pass-info" id="pass-info">
+                        <span class="password-info">Password must contain at least 8 characters with number and letters.</span>
+                        <br>
+                        <img src="image/false.png" id="pass-len">
+                        <span>8 characters</span>
+                        <br>
+                        <img src="image/false.png" id="pass-num">
+                        <span>Numbers</span>
+                        <br>
+                        <img src="image/false.png" id="pass-letter">
+                        <span>Letters</span>
+                    </div>
                     <input type="password" placeholder="Confirm Password" id="RCPassword" required>
 
                     <div class="show-pass">

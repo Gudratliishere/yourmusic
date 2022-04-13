@@ -135,3 +135,24 @@ form a {
     color: red;
     display: none;
 }
+
+.pass-info {
+    display: none;
+    text-align: left;
+    width: 90%;
+    margin-left: 10%;
+}
+
+.pass-info img {
+    width: 14px;
+    margin-right: 5px;
+}
+
+.pass-info span {
+    font-size: 11px;
+    font-style: italic;
+    font-family: "system-ui";
+    color: black;
+    text-align: left;
+    display: contents;
+}

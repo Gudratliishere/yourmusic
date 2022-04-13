@@ -27,6 +27,7 @@ session_start();
 $_SESSION['email'] = $email;
 $_SESSION['register'] = true;
 $_SESSION['user'] = serialize($user);
+$_SESSION['name'] = $user->name;
 header("Location: ../email_verification.php");
 
 function redirect_account ($code)
