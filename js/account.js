@@ -15,6 +15,7 @@ const PassInfo = document.getElementById("pass-info");
 const PassLen = document.getElementById("pass-len");
 const PassNum = document.getElementById("pass-num");
 const PassLetter = document.getElementById("pass-letter");
+const Strength = document.getElementById("pass-strength");
 
 //Global elements
 const Indicator = document.getElementById("Indicator");
@@ -23,7 +24,7 @@ const FormContainer = document.getElementById("FormContainer");
 //Toggle menu
 Register.onclick = function () {
     RegisterForm.style.transform = "translateX(0px)";
-    FormContainer.style.height = "560px";
+    FormContainer.style.height = "580px";
     LoginForm.style.transform = "translateX(0px)";
     Indicator.style.transform = "translateX(130px)";
 }
@@ -37,8 +38,10 @@ Login.onclick = function () {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const register = urlParams.get('request');
-    if (register == 'register')
+    if (register == 'register') {
         Register.click();
+        window.history.pushState({}, document.title, "/yourmusic/account.php");
+    }
 }
 
 //Show password functions
@@ -93,6 +96,19 @@ RPassword.onkeyup = function () {
 
     const numExp = /\d/;
     setTrueFalse(!numExp.test(RPassword.value), PassNum);
+
+    setStrength(RPassword.value.length > 8, letterExp.test(RPassword.value), numExp.test(RPassword.value));
+}
+
+function setStrength(lengthCondition, letterCondition, numCondition) {
+    let strength = 0;
+    if (lengthCondition)
+        strength++;
+    if (letterCondition)
+        strength++;
+    if (numCondition)
+        strength++;
+    Strength.value = strength;
 }
 
 function setTrueFalse(condition, element) {
@@ -115,8 +131,7 @@ RCPassword.onkeyup = function () {
         RCPassword.style.border = "2px solid red";
         ErrorMessage.style.display = "block";
         ErrorMessage.innerText = "Password doesn't match!";
-    } else
-    {
+    } else {
         ErrorMessage.style.display = "none";
         RCPassword.style.border = "1px solid silver";
     }

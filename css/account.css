@@ -156,3 +156,14 @@ form a {
     text-align: left;
     display: contents;
 }
+
+meter {
+    width: 200px;
+    color: red;
+    height: 10px;
+    border: none;
+}
+
+#password {
+    margin-bottom: 0;
+}

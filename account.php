@@ -79,6 +79,7 @@
                     <input type="email" name="email" placeholder="E-mail" required>
                     <input type="password" name="password" placeholder="Password" id="RPassword" required>
                     <div class="pass-info" id="pass-info">
+                        <meter max="3" id="pass-strength"></meter>
                         <span class="password-info">Password must contain at least 8 characters with number and letters.</span>
                         <br>
                         <img src="image/false.png" id="pass-len">
