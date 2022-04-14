@@ -17,9 +17,23 @@ if ($_SESSION['id'] || !$_SESSION['confirmed-user'])
     header('Location: profile.php');
 ?>
 <div class="container forget-password-container">
-    <form class="form-card" method="post" action="private/change_password.php" onsubmit="return passwordMatch()">
+    <form class="form-card" id="form" method="post" action="private/change_password.php" onsubmit="return passwordMatch()">
         <span>Define new password:</span>
         <input type="password" name="password" id="password" placeholder="Password" class="password" required>
+        <div class="pass-info" id="pass-info">
+            <meter max="3" id="pass-strength"></meter>
+            <br>
+            <span class="password-info">Password must contain at least 8 characters with number and letters.</span>
+            <br>
+            <img src="image/false.png" id="pass-len">
+            <span>8 characters</span>
+            <br>
+            <img src="image/false.png" id="pass-num">
+            <span>Numbers</span>
+            <br>
+            <img src="image/false.png" id="pass-letter">
+            <span>Letters</span>
+        </div>
         <input type="password" name="cpassword" id="cpassword" placeholder="Confirm password" class="password" required>
         <div class="show">
             <input type="checkbox" name="show" id="show">
@@ -27,8 +41,8 @@ if ($_SESSION['id'] || !$_SESSION['confirmed-user'])
         </div>
         <span class="message" id="message">
             <?php
-                if ($code && $code == 1)
-                    echo 'You used old password, try another one!';
+            if ($code && $code == 1)
+                echo 'You used old password, try another one!';
             ?>
         </span>
         <input type="submit" value="Save">

@@ -1,12 +1,12 @@
 .edit-profile-container {
     background-image: url("../image/edit_profile_background.jpg");
     background-size: cover;
+    height: 100%;
 }
 
 .blur {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
-    height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -19,6 +19,8 @@ form {
     border-radius: 30px;
     padding: 20px;
     height: 560px;
+    margin-bottom: 70px;
+    transition: height 0.3s;
 }
 
 .profile-info {
@@ -157,4 +159,32 @@ form {
 .delete-account:hover {
     background-color: #ac0300;
     cursor: pointer;
+}
+
+.pass-info {
+    display: none;
+    text-align: left;
+    width: 70%;
+    margin-left: 10%;
+}
+
+.pass-info img {
+    width: 14px;
+    margin-right: 5px;
+}
+
+.pass-info span {
+    font-size: 11px;
+    font-style: italic;
+    font-family: "system-ui";
+    color: black;
+    text-align: left;
+    display: contents;
+}
+
+meter {
+    width: 200px;
+    color: red;
+    height: 10px;
+    border: none;
 }

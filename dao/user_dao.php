@@ -6,7 +6,7 @@ class UserDao
 {
     public function add_user($user)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "insert into user (name, surname, email, password, photo) values(?, ?, ?, ?, ?);";
         $stmt = $con->prepare($query);
@@ -62,7 +62,7 @@ class UserDao
 
     private function change_status($status, $id)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "update user set status = ? where id = ?";
         $stmt = $con->prepare($query);
@@ -84,7 +84,7 @@ class UserDao
 
     private function change_ban_status ($status, $id)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "update user set banned = ? where id = ?";
         $stmt = $con->prepare($query);
@@ -158,7 +158,7 @@ class UserDao
 
     public function find_user_login_by_id($id)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = Connection::get_connection();
 
         $query = "select id, email, password, status, banned from user where id = ?";
         $stmt = $con->prepare($query);

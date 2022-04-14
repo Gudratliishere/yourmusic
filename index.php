@@ -11,7 +11,7 @@
 <body>
 	<div class="container home-container">
 
-		<?php include 'private/header.php' ?>
+		<?php include 'private/header.php'?>
 
 		<div class="content">
 			<div class="left-col">

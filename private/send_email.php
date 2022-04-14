@@ -64,6 +64,7 @@ function send_mail($to, $name)
     }
 }
 
+//Defining user name
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $name = get_user_name($email);

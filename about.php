@@ -21,11 +21,11 @@
             ipsa suscipit reprehenderit ipsum, non itaque quas at. Reiciendis eius eos, minima sit maxime
             officiis ipsam veritatis!</p>
         <h3>Contact us &#8650;</h3>
-        <img src="image/gmail_logo.png">
-        <img src="image/facebook_logo.png">
-        <img src="image/instagram_logo.png">
-        <img src="image/linkedln_logo.png">
-        <img src="image/github_logo.png">
+        <a href="#"><img src="image/gmail_logo.png"></a>
+        <a href="https://www.facebook.com/dunaygudratli" target="_blank"><img src="image/facebook_logo.png"></a>
+        <a href="https://www.instagram.com/dunayqudrtli/" target="_blank"><img src="image/instagram_logo.png"></a>
+        <a href="https://www.linkedin.com/in/dunaygudratli/" target="_blank"><img src="image/linkedln_logo.png"></a>
+        <a href="https://github.com/Gudratliishere" target="_blank"><img src="image/github_logo.png"></a>
     </div>
 </div>
 </body>

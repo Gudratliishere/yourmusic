@@ -89,15 +89,19 @@ RPassword.addEventListener("focusout", (event) => {
 });
 
 RPassword.onkeyup = function () {
-    setTrueFalse(RPassword.value.length < 8, PassLen);
+    validatePassword(RPassword);
+}
+
+function validatePassword(element) {
+    setTrueFalse(element.value.length < 8, PassLen);
 
     const letterExp = /[a-zA-Z]/g;
-    setTrueFalse(!letterExp.test(RPassword.value), PassLetter);
+    setTrueFalse(!letterExp.test(element.value), PassLetter);
 
     const numExp = /\d/;
-    setTrueFalse(!numExp.test(RPassword.value), PassNum);
+    setTrueFalse(!numExp.test(element.value), PassNum);
 
-    setStrength(RPassword.value.length > 8, letterExp.test(RPassword.value), numExp.test(RPassword.value));
+    setStrength(element.value.length > 8, letterExp.test(element.value), numExp.test(element.value));
 }
 
 function setStrength(lengthCondition, letterCondition, numCondition) {

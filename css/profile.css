@@ -121,16 +121,7 @@
 
 .profile-photo a{
     text-decoration: none;
-    background-color: #ff025d;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 10px;
     margin-bottom: auto;
     margin-right: 0;
     margin-left: auto;
-    transition: background 0.2s;
-}
-
-.profile-photo a:hover {
-    background-color: #ff568f;
 }

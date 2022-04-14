@@ -31,7 +31,7 @@ if (!$_SESSION['id'])
             ?>
             <img src="<?php if ($user->photo == null || $user->photo == '') echo 'image/default_pp.jpg';
             else echo 'data:image/jpg;base64,' . base64_encode($user->photo); ?>" alt="Profile photo" id="pp">
-            <a href="edit_profile.php">Edit</a>
+            <a href="edit_profile.php"><img src="image/edit.png"></a>
         </div>
         <h1><?= $user->name ?><br><?= $user->surname ?></h1>
         <div class="rating-user">

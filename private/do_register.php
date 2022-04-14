@@ -6,17 +6,19 @@ if ($_SESSION['id'])
     exit();
 }
 
+include '../dao/user_dao.php';
+include '../entity/user.php';
+
+//Fetching parameters from post request
 $name = $_POST['name'];
 $surname = $_POST['surname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-include '../dao/user_dao.php';
 $dao = new UserDao();
 if ($dao->email_exists($email))
     redirect_account(1);
 
-include '../entity/user.php';
 $user = new User();
 $user->name = $name;
 $user->surname = $surname;

@@ -19,7 +19,7 @@ $user = $dao->find_user_by_id($_SESSION['id']);
 <div class="container edit-profile-container">
     <div class="blur">
         <form action="private/do_edit.php" method="post" enctype="multipart/form-data"
-              onsubmit="return checkPasswordMatch()">
+              onsubmit="return checkPasswordMatch()" id="form">
             <div class="profile-info">
                 <img src="<?php if ($user->photo == null || $user->photo == '') echo 'image/default_pp.jpg';
                 else echo 'data:image/jpg;base64,' . base64_encode($user->photo); ?>" alt="Profile photo"
@@ -49,6 +49,20 @@ $user = $dao->find_user_by_id($_SESSION['id']);
                     <input type="password" name="old-password" id="old-password" class="password">
                     <span>New password</span>
                     <input type="password" name="new-password" id="new-password" class="password">
+                    <div class="pass-info" id="pass-info">
+                        <meter max="3" id="pass-strength"></meter>
+                        <br>
+                        <span class="password-info">Password must contain at least 8 characters with number and letters.</span>
+                        <br>
+                        <img src="image/false.png" id="pass-len">
+                        <span>8 characters</span>
+                        <br>
+                        <img src="image/false.png" id="pass-num">
+                        <span>Numbers</span>
+                        <br>
+                        <img src="image/false.png" id="pass-letter">
+                        <span>Letters</span>
+                    </div>
                     <span>Confirm new password</span>
                     <input type="password" name="new-cpassword" id="new-cpassword" class="password">
                     <div class="show">
