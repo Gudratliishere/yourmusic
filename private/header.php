@@ -1,6 +1,6 @@
 <?php
 include 'database/initializer.php';
-create_tables();
+init_database();
 ?>
 
 <link rel="stylesheet" href="css/header.css">

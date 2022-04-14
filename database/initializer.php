@@ -1,10 +1,20 @@
 <?php
+function init_database ()
+{
+    $con = Connection::get_connection_without_database();
+    $query = "create database if not exists yourmusic";
+    $con->query($query);
+
+    create_tables();
+}
+
 function create_tables()
 {
     $creater = new TableCreater();
     $creater->create_user_table();
     $creater->create_music_table();
     $creater->create_rate_table();
+    $creater->create_old_passwords_table();
 
 }
 
@@ -21,18 +31,18 @@ class TableCreater
     function create_user_table()
     {
         $query = "CREATE TABLE IF NOT EXISTS`user`  (
-                `id` int NOT NULL AUTO_INCREMENT,
-                `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                `surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                `phone` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                `rate` int NULL DEFAULT NULL,
-                `rate_count` int NULL DEFAULT NULL,
-                `shared_musics` int NULL DEFAULT NULL,
-                `status` int NULL DEFAULT 0,
-                `photo` blob NULL,
-                PRIMARY KEY (`id`) USING BTREE
+                  `id` int NOT NULL AUTO_INCREMENT,
+                  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                  `surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                  `rate` int NULL DEFAULT 0,
+                  `rate_count` int NULL DEFAULT 0,
+                  `shared_musics` int NULL DEFAULT 0,
+                  `status` int NULL DEFAULT 1,
+                  `photo` mediumblob NULL,
+                  `banned` int NULL DEFAULT 0,
+                  PRIMARY KEY (`id`) USING BTREE
               ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
         $this->run_query($query);
     }
@@ -73,7 +83,7 @@ class TableCreater
     function create_old_passwords_table()
     {
         $query = "CREATE TABLE IF NOT EXISTS `old_password`  (
-                  `id` int NOT NULL,
+                  `id` int NOT NULL AUTO_INCREMENT,
                   `user` int NULL DEFAULT NULL,
                   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
                   PRIMARY KEY (`id`) USING BTREE,

@@ -113,7 +113,7 @@ function validatePassword(element) {
     const numExp = /\d/;
     setTrueFalse(!numExp.test(element.value), PassNum);
 
-    setStrength(element.value.length > 8, letterExp.test(element.value), numExp.test(element.value));
+    setStrength(element.value.length >= 8, letterExp.test(element.value), numExp.test(element.value));
 }
 
 function setStrength(lengthCondition, letterCondition, numCondition) {
