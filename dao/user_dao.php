@@ -6,7 +6,7 @@ class UserDao
 {
     public function add_user($user)
     {
-        $con = mysqli_connect("localhost", "root", "2002", "yourmusic");
+        $con = new mysqli("localhost", "root", "2002", "yourmusic");
 
         $query = "insert into user (name, surname, email, password, photo) values(?, ?, ?, ?, ?);";
         $stmt = $con->prepare($query);
