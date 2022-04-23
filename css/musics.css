@@ -82,3 +82,26 @@ a {
 .row span {
     margin: 20px;
 }
+
+.head {
+    display: flex;
+}
+
+.add-music {
+    margin-left: auto;
+    margin-right: 10px;
+    background-color: #ff2100;
+    color: white;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: 'Palette Mosaic', cursive;
+    transition: background 0.4s;
+}
+
+.add-music:hover {
+    background-color: #931300;
+}

@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="user-edit">
-                    <form action="edit_music.php" method="get">
+                    <form action="edit_music.php" method="post">
                         <input type="submit" value="Edit" id="edit">
                     </form>
                     <form action="delete_music.php" method="post">

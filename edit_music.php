@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!$_SESSION['id'])
+    header("Location: account.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,16 +16,22 @@
 </head>
 
 <body>
-    <?php include 'private/header.php' ?>
+    <?php include 'private/header.php';
+    $music_id = $_POST['music_id'];
+    $name = $_POST['name'];
+    $path = $_POST['path'];
+    $lyrics = $_POST['lyrics'];
+    ?>
     <div class="container edit-music-container">
         <div class="blur">
             <div class="music">
                 <form action="" method="post">
-                    <input type="text" placeholder="Music name" required>
-                    <input type="file" accept="audio/*" id="music" required>
+                    <input type="hidden" name="music_id" value="<?=$music_id?>">
+                    <input type="text" placeholder="Music name" name="name" value="<?=$name?>" required>
+                    <input type="file" accept="audio/*" id="music" name="path" value="<?=$path?>" required>
                     <label for="music">Upload music</label>
                     <span id="fileUploadMessage">File uploaded successfully!</span>
-                    <textarea id="lyrics" rows="17" required></textarea>
+                    <textarea id="lyrics" rows="17" name="lyrics" required><?=$lyrics?></textarea>
                     <div class="submit"><input type="submit" value="Save"></div>
                 </form>
             </div>

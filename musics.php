@@ -14,8 +14,10 @@
     <div class="container musics-container">
         <div class="blur">
             <div class="musics">
-                <h2>Last musics</h2>
-
+                <div class="head">
+                    <h2>Last musics</h2>
+                    <a href="edit_music.php" class="add-music">Add music</a>
+                </div>
                 <!-- rows -->
                 <a href="listening.php">
                     <div class="row">
