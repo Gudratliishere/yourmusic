@@ -21,6 +21,8 @@ class MusicDao
             $music->id = $row['id'];
         }
 
+        var_dump($con);
+
         return $music;
     }
 
@@ -36,6 +38,10 @@ class MusicDao
         $stmt->close;
 
         $row = $result->fetch_assoc();
+
+        if (!$row)
+            return null;
+
         return fill_music($row);
     }
 

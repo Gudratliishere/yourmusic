@@ -28,7 +28,7 @@ if (!$_SESSION['id'])
                 <form action="private/save_music.php" method="post">
                     <input type="hidden" name="music_id" value="<?=$music_id?>">
                     <input type="text" placeholder="Music name" name="name" value="<?=$name?>" required>
-                    <input type="file" accept="audio/*" id="music" name="path" value="<?=$path?>" required>
+                    <input type="file" accept="audio/*" id="music" name="path" required>
                     <label for="music">Upload music</label>
                     <span id="fileUploadMessage">File uploaded successfully!</span>
                     <textarea id="lyrics" rows="17" name="lyrics" required><?=$lyrics?></textarea>
