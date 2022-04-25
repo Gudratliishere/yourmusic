@@ -25,7 +25,7 @@ if (!$_SESSION['id'])
     <div class="container edit-music-container">
         <div class="blur">
             <div class="music">
-                <form action="" method="post">
+                <form action="private/save_music.php" method="post">
                     <input type="hidden" name="music_id" value="<?=$music_id?>">
                     <input type="text" placeholder="Music name" name="name" value="<?=$name?>" required>
                     <input type="file" accept="audio/*" id="music" name="path" value="<?=$path?>" required>

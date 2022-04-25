@@ -3,7 +3,8 @@
         public $id;
         public $name;
         public $path;
-        public $rating;
+        public $rate;
+        public $rate_count;
         public $user;
         public $publish_date;
     }
