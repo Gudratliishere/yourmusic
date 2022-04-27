@@ -20,17 +20,16 @@ $music = $dao->find_by_id($music_id);
 $valid_format = array("mp3", "ogg", "flac");
 $file = $_FILES['path']['name'];
 $size = $_FILES['path']['size'];
-var_dump($file); echo '<br><br>';
 if (strlen($file)) {
-    list($txt, $ext) = explode(".", $file);
+    $ext = end(explode(".", $file));
     if (in_array($ext, $valid_format)) {
-        $actual_image_name = $txt . '.' . $ext;
-        $temp = $_FILES['path']['tmp_name'];
-        $destination = "music" . $actual_image_name;
-        if (move_uploaded_file($temp, $destination))
-            $path = $destination;
+        $temp = $_FILES["path"]["tmp_name"];
+        $destination = "../music/" . $file;
+        if (copy($temp, $destination))
+            $path = $file;
         else
             header("Location: ../index.php");
+
     }
 }
 
@@ -40,12 +39,10 @@ if ($music) {
 } else {
     $music = new Music();
     $music = fill_music($music);
-    var_dump($music);
-    echo '<br>';
     $music = $dao->add_music($music);
 }
 
-//header("Location: ../listening.php?id=$music->id");
+header("Location: ../listening.php?id=$music->id");
 
 function fill_music($music)
 {

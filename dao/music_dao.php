@@ -8,10 +8,10 @@ class MusicDao
     {
         $con = Connection::get_connection();
 
-        $query = "insert into music(name, path, rate, rate_count, user) values (?, ?, ?, ?, ?)";
+        $query = "insert into music(name, path, user) values (?, ?, ?)";
         $stmt = $con->prepare($query);
-        $stmt->bind_param("ssiii",
-            $music->name, $music->path, $music->rate, $music->rate, $music->rate_count, $music->user);
+        $stmt->bind_param("ssi",
+            $music->name, $music->path, $music->user);
         $stmt->execute();
         $stmt->close();
 
@@ -20,8 +20,6 @@ class MusicDao
             $row = $result->fetch_assoc();
             $music->id = $row['id'];
         }
-
-        var_dump($con);
 
         return $music;
     }

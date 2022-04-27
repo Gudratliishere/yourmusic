@@ -17,21 +17,27 @@ if (!$_SESSION['id'])
 
 <body>
     <?php include 'private/header.php';
-    $music_id = $_POST['music_id'];
-    $name = $_POST['name'];
-    $path = $_POST['path'];
-    $lyrics = $_POST['lyrics'];
+    include 'dao/music_dao.php';
+    $music_id = $_GET['id'];
+    if (!empty($music_id))
+    {
+        $dao = new MusicDao();
+        $music = $dao->find_by_id($music_id);
+        if ($music->user != $_SESSION['id'])
+            header("Location: listening.php?id=" . $music_id);
+    }
     ?>
     <div class="container edit-music-container">
         <div class="blur">
             <div class="music">
-                <form action="private/save_music.php" method="post">
+                <form action="private/save_music.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="music_id" value="<?=$music_id?>">
-                    <input type="text" placeholder="Music name" name="name" value="<?=$name?>" required>
-                    <input type="file" accept="audio/*" id="music" name="path" required>
+                    <input type="text" placeholder="Music name" name="name" value="<?=$music->name?>" required>
+                    <input type="file" accept="audio/*" id="music" name="path"
+                           value="<?="music/".$music->path?>" required>
                     <label for="music">Upload music</label>
                     <span id="fileUploadMessage">File uploaded successfully!</span>
-                    <textarea id="lyrics" rows="17" name="lyrics" required><?=$lyrics?></textarea>
+                    <textarea id="lyrics" rows="17" name="lyrics" required><?=$music->lyrics?></textarea>
                     <div class="submit"><input type="submit" value="Save"></div>
                 </form>
             </div>
