@@ -18,6 +18,7 @@ if (!$_SESSION['id'])
 <body>
     <?php include 'private/header.php';
     include 'dao/music_dao.php';
+    include 'entity/music.php';
     $music_id = $_GET['id'];
     if (!empty($music_id))
     {
@@ -33,8 +34,7 @@ if (!$_SESSION['id'])
                 <form action="private/save_music.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="music_id" value="<?=$music_id?>">
                     <input type="text" placeholder="Music name" name="name" value="<?=$music->name?>" required>
-                    <input type="file" accept="audio/*" id="music" name="path"
-                           value="<?="music/".$music->path?>" required>
+                    <input type="file" accept="audio/*" id="music" name="path">
                     <label for="music">Upload music</label>
                     <span id="fileUploadMessage">File uploaded successfully!</span>
                     <textarea id="lyrics" rows="17" name="lyrics" required><?=$music->lyrics?></textarea>

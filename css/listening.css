@@ -174,3 +174,15 @@ pre {
 .music-name span {
     margin-right: 15px;
 }
+
+.music-not-found {
+    font-size: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 30px;
+}
+
+.user-name {
+    text-decoration: none;
+    color: #b30000;
+}

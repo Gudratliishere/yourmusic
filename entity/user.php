@@ -1,5 +1,7 @@
-<?php 
-    class User {
+<?php
+namespace entity {
+    class User
+    {
         public $id;
         public $name;
         public $surname;
@@ -12,4 +14,4 @@
         public $status;
         public $banned;
     }
-?>
+}

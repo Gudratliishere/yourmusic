@@ -11,32 +11,15 @@
 <body>
 	<div class="container home-container">
 
-		<?php include 'private/header.php'?>
+		<?php include 'private/header.php';
+		include 'dao/music_dao.php';
+		include 'entity/music.php';
+		$dao = new MusicDao();
+		$music = $dao->find_random_music();?>
 
 		<div class="content">
 			<div class="left-col">
-				<pre>Hiçbi' dert yara değil
-Kendin ol, para değil
-Büyü de bi' yana git
-Dünya sana mı kalır it?
-Fiyakalı araba
-Kendin ol, para değil
-Büyü de bi' yana git
-Dünya sana mı kalır it?
-Fiyakalı araba
-Kendin ol, para değil
-Büyü de bi' yana git
-Dünya sana mı kalır it?
-Fiyakalı araba
-Kendin ol, para değil
-Büyü de bi' yana git
-Dünya sana mı kalır it?Dünya sana mı kalır it?
-Fiyakalı araba
-Kendin ol, para değil
-Büyü de bi' yana git
-Dünya sana mı kalır it?
-Fiyakalı araba
-				</pre>
+				<pre><?=$music->lyrics?></pre>
 			</div>
 			<div class="right-col">
 				<p>Click here to listen</p>
@@ -45,7 +28,7 @@ Fiyakalı araba
 		</div>
 	</div>
 	<audio id="mySong">
-		<source src="Velet%20-%20UYAN%20Ft%20Canbay%20&%20Wolker.mp3" type="audio/mp3">
+		<source src="music/<?=$music->path?>" type="audio/mp3">
 	</audio>
 
 	<script>

@@ -10,7 +10,16 @@
 </head>
 
 <body>
-    <?php include 'private/header.php' ?>
+    <?php include 'private/header.php';
+    include 'dao/music_dao.php';
+    include 'dao/user_dao.php';
+    include 'entity/music.php';
+    include 'private/util.php';
+
+    $music_dao = new MusicDao();
+    $user_dao = new UserDao();
+    $musics = $music_dao->find_all();
+    ?>
     <div class="container musics-container">
         <div class="blur">
             <div class="musics">
@@ -19,176 +28,21 @@
                     <a href="edit_music.php" class="add-music">Add music</a>
                 </div>
                 <!-- rows -->
-                <a href="listening.php">
+                <?php foreach ($musics as $music) { ?>
+                <a href="listening.php?id=<?=$music->id?>">
                     <div class="row">
                         <img src="image/music-logo.png" class="music-logo">
                         <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
+                            <h4><?=$user_dao->find_user_full_name($music->user)?></h4>
+                            <span><?=$music->name?></span>
                         </div>
                         <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
+                            <?php make_rating($music->rate, $music->rate_count);?>
                         </div>
-                        <span>10.05.2021</span>
+                        <span><?=$music->publish_date?></span>
                     </div>
                 </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
-                <a href="listening.php">
-                    <div class="row">
-                        <img src="image/music-logo.png" class="music-logo">
-                        <div class="music-name">
-                            <h4>Name Surname</h4>
-                            <span>Canbay & Wolker - Dayanamam</span>
-                        </div>
-                        <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
-                        </div>
-                        <span>10.05.2021</span>
-                    </div>
-                </a>
+                <?php } ?>
 
                 <div class="paging">
                     <span>1</span>

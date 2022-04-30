@@ -19,15 +19,24 @@ if (!$_SESSION['id'])
 </head>
 
 <body>
-<?php include 'private/header.php'; ?>
+<?php include 'private/header.php';
+include 'dao/user_dao.php';
+include 'dao/music_dao.php';
+include 'entity/user.php';
+include 'entity/music.php';
+include 'private/util.php';
+?>
 <div class="container profile-container">
     <div class="profile-card">
         <div class="profile-photo">
             <?php
-            include 'dao/user_dao.php';
-            include 'entity/user.php';
+            $id = null;
+            if (!empty($_GET['id']))
+                $id = $_GET['id'];
+            else
+                $id = $_SESSION['id'];
             $dao = new UserDao();
-            $user = $dao->find_user_by_id($_SESSION['id']);
+            $user = $dao->find_user_by_id($id);
             ?>
             <img src="<?php if ($user->photo == null || $user->photo == '') echo 'image/default_pp.jpg';
             else echo 'data:image/jpg;base64,' . base64_encode($user->photo); ?>" alt="Profile photo" id="pp">
@@ -36,7 +45,6 @@ if (!$_SESSION['id'])
         <h1><?= $user->name ?><br><?= $user->surname ?></h1>
         <div class="rating-user">
             <?php
-            include 'private/util.php';
             make_rating($user->rate, $user->rate_count);
             ?>
         </div>
@@ -45,116 +53,20 @@ if (!$_SESSION['id'])
     </div>
     <div class="last-posts">
         <h2>Last musics</h2>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
+        <?php $music_dao = new MusicDao();
+        $musics = $music_dao->find_all_by_user($id);
+        foreach ($musics as $music) {?>
+        <a href="listening.php?id=<?=$music->id?>">
+            <div class="row">
+                <img src="image/music-logo.png" alt="" class="music-logo">
+                <span><?=$music->name?></span>
+                <div class="rating">
+                    <?php make_rating($music->rate, $music->rate_count);?>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
-        <div class="row">
-            <img src="image/music-logo.png" alt="" class="music-logo">
-            <span>Canbay & Wolker - Dayanamam</span>
-            <div class="rating">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star.png" alt="">
-                <img src="image/star-half.png" alt="">
-                <img src="image/star-empty.png" alt="">
-            </div>
-        </div>
+        </a>
+        <?php }?>
+
         <div class="paging">
             <span>1</span>
             <span>2</span>

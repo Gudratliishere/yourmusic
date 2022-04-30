@@ -9,7 +9,7 @@ var wavesurfer = WaveSurfer.create({
     barRadius: 4
 });
 
-wavesurfer.load('Velet - UYAN Ft Canbay & Wolker.mp3');
+wavesurfer.load('music/' + document.getElementById('path').innerText);
 
 var playButton = document.getElementById("playButton");
 var stopButton = document.getElementById("stopButton");
@@ -49,3 +49,12 @@ wavesurfer.on('audioprocess', function() {
         '0' + Math.floor(currentTime) % 60 : Math.floor(currentTime) % 60;
     time.innerHTML = '0' + Math.floor(Math.floor(currentTime) / 60) + ':' + seconds;
 });
+
+//Delete button
+let del = document.getElementById('delete');
+let del_form = document.getElementById("delete_form");
+
+del.onclick = function () {
+    if (confirm("Are you sure to delete this sound?"))
+        del_form.submit();
+}

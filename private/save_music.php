@@ -48,7 +48,8 @@ function fill_music($music)
 {
     global $name, $path, $lyrics;
     $music->name = $name;
-    $music->path = $path;
+    if ($path != '')
+        $music->path = $path;
     $music->lyrics = $lyrics;
     $music->user = $_SESSION['id'];
     return $music;

@@ -1,5 +1,8 @@
 <?php
 
+include '../entity/user.php';
+use entity\User;
+
 include '../database/connection.php';
 
 class UserDao
@@ -103,8 +106,8 @@ class UserDao
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        $user = new User();
-        return $this->fill_user($user, $row);
+
+        return $this->fill_user($row);
     }
 
     public function find_user_by_email($email)
@@ -117,12 +120,13 @@ class UserDao
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        $user = new User();
-        return $this->fill_user($user, $row);
+
+        return $this->fill_user($row);
     }
 
-    private function fill_user($user, $row)
+    private function fill_user($row)
     {
+        $user = new User();
         $user->id = $row['id'];
         $user->name = $row['name'];
         $user->surname = $row['surname'];
@@ -136,6 +140,20 @@ class UserDao
         $user->banned = $row['banned'];
 
         return $user;
+    }
+
+    public function find_user_full_name ($id)
+    {
+        $con = Connection::get_connection();
+
+        $query = "select concat(name, ' ', surname) as full_name from user where id = ?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return $row['full_name'];
     }
 
     public function find_user_login_by_email($email)

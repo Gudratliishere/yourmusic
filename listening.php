@@ -11,23 +11,37 @@
 </head>
 
 <body>
-    <?php include 'private/header.php' ?>
+    <?php include 'private/header.php';
+    include 'dao/music_dao.php';
+    include 'dao/user_dao.php';
+    include 'entity/music.php';
+    $music = null;
+    $user_name = null;
+    if (!empty($_GET['id']))
+    {
+        $id = $_GET['id'];
+        $music_dao = new MusicDao();
+        $user_dao = new UserDao();
+        $music = $music_dao->find_by_id($id);
+        $user_name = $user_dao->find_user_full_name($music->user);
+    }
+    ?>
     <div class="container listening-container">
         <div class="blur">
             <div class="music">
                 <img src="image/music-logo.png">
-                <div class="info">
-                    <h1>Name Surname</h1>
+                <?php if ($music == null) echo '<span class="music-not-found">Music not found! :(</span>';
+                else {?>
+                    <span id="path" style="display: none"><?=$music->path?></span>
+                    <div class="info">
+                    <a class="user-name" href="profile.php?id=<?=$music->user?>"><h1><?=$user_name?></h1></a>
                     <div class="music-name">
-                        <h3>Music Name</h3>
+                        <h3><?=$music->name?></h3>
                         <div class="rating">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star.png" alt="">
-                            <img src="image/star-half.png" alt="">
-                            <img src="image/star-empty.png" alt="">
+                            <?php include 'private/util.php';
+                            make_rating($music->rate, $music->rate_count);?>
                         </div>
-                        <span>23.03.2020</span>
+                        <span><?=$music->publish_date?></span>
                     </div>
                     <div id="waveform" class="wave"></div>
                     <div class="music-info">
@@ -40,16 +54,17 @@
                     </div>
                 </div>
                 <div class="user-edit">
-                    <form action="edit_music.php" method="post">
+                    <form action="edit_music.php?id=<?=$music->id?>" method="post">
                         <input type="submit" value="Edit" id="edit">
                     </form>
-                    <form action="delete_music.php" method="post">
-                        <input type="submit" value="Delete" id="delete">
+                    <form action="private/delete_music.php?id=<?=$music->id?>" method="post" id="delete_form">
                     </form>
+                    <input type="submit" value="Delete" id="delete">
                 </div>
+                <?php } ?>
             </div>
 
-            <form action="/" method="get" class="giving-rate">
+            <form action="/" method="get" class="giving-rate" style="display: none">
                 <span>Rate this music!</span>
                 <input type="range" name="rate" id="">
                 <input type="hidden" name="music" value="">
@@ -58,25 +73,7 @@
             </form>
 
             <div class="lyrics">
-                <pre>
-                    Hiçbi' dert yara değil
-                    Kendin ol, para değil
-                    Büyü de bi' yana git
-                    Dünya sana mı kalır it?
-                    Fiyakalı araba
-                    Rollie, Gucci, Prada
-                    3'ü de bi' arada
-                    Godaman da para var
-                    Ki yatırır tufada
-                    Denedim olmadı her günüm ayrı bi' leş
-                    Sana mı kaldı bu dünya yok hayrına denk gelünya yok hayrına denk gel
-                    Hayat herkese farklı bir renk
-                    Beni de alma hedef ederim aklına cenk
-                    Kara para getir adına okul yap
-                    Sana demediler mi "Kadına dokunma?"
-                    12'de gelin ama çok uzak okul lan
-                    Neyin peşindesin oğlum neyle zorun var?
-                </pre>
+                <pre><?=$music->lyrics?></pre>
             </div>
         </div>
     </div>
