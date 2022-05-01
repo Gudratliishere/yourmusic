@@ -19,38 +19,7 @@
 
 		<div class="content">
 			<div class="left-col">
-				<pre><?=$music->lyrics?>
-                fsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
-                dsfsdfsdfsdfsdfdsfsd
-                gfsdfsdfsdfsdfsdfsdfsdfds
-                fsdfdsfsdfsdfdsfsdfsd</pre>
+				<pre><?=$music->lyrics?></pre>
 			</div>
 			<div class="right-col">
 				<p class="music-name"><?=$music->name?></p>
