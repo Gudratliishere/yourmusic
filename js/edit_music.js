@@ -1,6 +1,12 @@
-var fileUploadMessage = document.getElementById("fileUploadMessage");
-var music = document.getElementById("music");
+let fileUploadMessage = document.getElementById("fileUploadMessage");
+let music = document.getElementById("music");
+
+music.onclick = function ()
+{
+    fileUploadMessage.style.visibility = "visible";
+}
 
 music.onchange = function() {
-    fileUploadMessage.style.visibility = "visible";
+    fileUploadMessage.innerText = "File uploaded successfully!";
+    fileUploadMessage.style.color = "green";
 }

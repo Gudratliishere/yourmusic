@@ -186,3 +186,58 @@ pre {
     text-decoration: none;
     color: #b30000;
 }
+
+/*Tablet*/
+@media only screen and (max-width: 850px) {
+
+}
+
+/*Phone*/
+@media only screen and (max-width: 600px) {
+    .music-logo {
+        display: none;
+    }
+
+    .info h1 {
+        font-size: 20px;
+    }
+
+    .info h3 {
+        font-size: 15px;
+        padding: 5px 0;
+    }
+
+    .music-name {
+        flex-direction: column;
+    }
+
+    .rating {
+        margin-left: 0;
+        flex-basis: 10%;
+    }
+
+    #publish-date {
+        font-size: 12px;
+    }
+
+    .wave {
+        width: 85%;
+    }
+
+    .controls {
+        margin-top: 10px;
+    }
+
+    .controls img {
+        width: 12px;
+    }
+
+    .music {
+        height: 230px;
+    }
+
+    .time {
+        padding-top: 6px;
+        font-size: 14px;
+    }
+}

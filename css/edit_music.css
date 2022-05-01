@@ -18,7 +18,7 @@
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
     width: 70%;
-    height: 70%;
+    height: 75%;
     border-radius: 20px;
     padding: 20px;
 }
@@ -62,7 +62,7 @@
 
 #fileUploadMessage {
     visibility: hidden;
-    color: green;
+    color: #545454;
     text-align: center;
     margin-top: 15px;
 }
@@ -95,4 +95,22 @@ textarea:focus {
 
 .music input[type="submit"]:hover {
     background-color: rgb(139, 56, 1);
+}
+
+progress {
+    margin-top: 15px;
+    width: 100%;
+    height: 15px;
+    -webkit-appearance: none;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: whitesmoke;
+}
+
+progress::-webkit-progress-value {
+    background: #00aced;
 }

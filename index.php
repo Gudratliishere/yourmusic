@@ -19,10 +19,41 @@
 
 		<div class="content">
 			<div class="left-col">
-				<pre><?=$music->lyrics?></pre>
+				<pre><?=$music->lyrics?>
+                fsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsdfsdafsd fsdfsdfsdf sdfsd f
+                dsfsdfsdfsdfsdfdsfsd
+                gfsdfsdfsdfsdfsdfsdfsdfds
+                fsdfdsfsdfsdfdsfsdfsd</pre>
 			</div>
 			<div class="right-col">
-				<p>Click here to listen</p>
+				<p class="music-name"><?=$music->name?></p>
 				<img src="image/play.png" id="icon">
 			</div>
 		</div>
@@ -30,21 +61,7 @@
 	<audio id="mySong">
 		<source src="music/<?=$music->path?>" type="audio/mp3">
 	</audio>
-
-	<script>
-		var mySong = document.getElementById("mySong");
-		var icon = document.getElementById("icon");
-
-		icon.onclick = function() {
-			if (mySong.paused) {
-				mySong.play();
-				icon.src = "image/pause.png";
-			} else {
-				mySong.pause();
-				icon.src = "image/play.png";
-			}
-		}
-	</script>
 </body>
-
 </html>
+
+<script src="js/index.js"></script>

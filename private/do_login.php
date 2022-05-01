@@ -1,7 +1,6 @@
 <?php
 
 include '../dao/user_dao.php';
-include '../entity/user.php';
 
 if (isset_fields()) {
     $user = user_exists();

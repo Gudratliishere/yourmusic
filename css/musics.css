@@ -105,3 +105,51 @@ a {
 .add-music:hover {
     background-color: #931300;
 }
+
+.music-body {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 75%;
+}
+
+/*Tablet*/
+@media only screen and (max-width: 850px) {
+    .music-logo {
+        width: 60px;
+    }
+
+    .music-body {
+        flex-basis: 75%;
+    }
+}
+
+/*Phone*/
+@media only screen and (max-width: 600px) {
+    .music-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .music-body {
+        flex-direction: column;
+        flex-basis: 70%;
+        padding-left: 15px;
+    }
+
+    .music-name {
+        padding-left: 0;
+    }
+
+    .rating{
+        padding-top: 5px;
+    }
+
+    .row span {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    #publish-date {
+        margin: auto 0 auto 2px;
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!$_SESSION['id'])
+if (!$_SESSION['id'] && empty($_GET['id']))
     header('Location: account.php');
 ?>
 
@@ -40,32 +40,34 @@ include 'private/util.php';
             ?>
             <img src="<?php if ($user->photo == null || $user->photo == '') echo 'image/default_pp.jpg';
             else echo 'data:image/jpg;base64,' . base64_encode($user->photo); ?>" alt="Profile photo" id="pp">
-            <a href="edit_profile.php"><img src="image/edit.png"></a>
+            <?php if ($id == $_SESSION['id']) { ?>
+            <a href="edit_profile.php"><img src="image/edit.png"></a> <?php }?>
         </div>
-        <h1><?= $user->name ?><br><?= $user->surname ?></h1>
+        <h1><?= $user->name ?> <br class="break"><?= $user->surname ?></h1>
         <div class="rating-user">
             <?php
             make_rating($user->rate, $user->rate_count);
             ?>
         </div>
         <span>Shared musics: <?= $user->shared_musics ?></span>
-        <button class="logout" id="logout">Log out</button>
+        <?php if ($id == $_SESSION['id']) { ?>
+            <button class="logout" id="logout">Log out</button> <?php } ?>
     </div>
     <div class="last-posts">
         <h2>Last musics</h2>
         <?php $music_dao = new MusicDao();
         $musics = $music_dao->find_all_by_user($id);
-        foreach ($musics as $music) {?>
-        <a href="listening.php?id=<?=$music->id?>">
-            <div class="row">
-                <img src="image/music-logo.png" alt="" class="music-logo">
-                <span><?=$music->name?></span>
-                <div class="rating">
-                    <?php make_rating($music->rate, $music->rate_count);?>
+        foreach ($musics as $music) { ?>
+            <a href="listening.php?id=<?= $music->id ?>">
+                <div class="row">
+                    <img src="image/music-logo.png" alt="" class="music-logo">
+                    <span><?= $music->name ?></span>
+                    <div class="rating">
+                        <?php make_rating($music->rate, $music->rate_count); ?>
+                    </div>
                 </div>
-            </div>
-        </a>
-        <?php }?>
+            </a>
+        <?php } ?>
 
         <div class="paging">
             <span>1</span>

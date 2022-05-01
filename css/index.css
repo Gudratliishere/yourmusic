@@ -71,3 +71,28 @@
     font-weight: 400;
     margin-right: 15px;
 }
+
+/*Phone*/
+@media only screen and (max-width: 600px) {
+    .content {
+        flex-direction: column-reverse;
+    }
+
+    .music-name {
+        transform: translateY(-60px);
+    }
+
+    .right-col p {
+        font-size: 25px;
+    }
+
+    .right-col {
+        margin: auto;
+        height: 100%;
+        flex-direction: column;
+    }
+    .left-col {
+        width: 95%;
+        margin-top: 50px;
+    }
+}

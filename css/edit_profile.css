@@ -188,3 +188,14 @@ meter {
     height: 10px;
     border: none;
 }
+
+/*Phone*/
+@media only screen and (max-width: 600px) {
+    /*.profile-info {*/
+    /*    flex-direction: column;*/
+    /*}*/
+
+    .profile-info img {
+        width: 100px;
+    }
+}

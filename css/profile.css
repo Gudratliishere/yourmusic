@@ -131,3 +131,47 @@ a {
     margin-right: 0;
     margin-left: auto;
 }
+
+@media only screen and (max-width: 600px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-card {
+        width: 85%;
+    }
+
+    .break {
+        display: none;
+    }
+
+    .profile-card span {
+        padding-top: 0;
+    }
+
+    .last-posts {
+        width: 85%;
+    }
+
+    .rating {
+        flex-basis: 23%;
+        width: 100%;
+    }
+
+    .rating img {
+        width: 12px;
+    }
+
+    .row span {
+        flex-basis: 70%;
+    }
+
+    .row span, .rating {
+        margin-bottom: 8px;
+    }
+
+    .music-logo {
+        flex-basis: 7%;
+        width: 35px;
+    }
+}

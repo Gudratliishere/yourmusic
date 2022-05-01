@@ -36,7 +36,7 @@ if (!$_SESSION['id'])
                     <input type="text" placeholder="Music name" name="name" value="<?=$music->name?>" required>
                     <input type="file" accept="audio/*" id="music" name="path">
                     <label for="music">Upload music</label>
-                    <span id="fileUploadMessage">File uploaded successfully!</span>
+                    <span id="fileUploadMessage">Uploading file...</span>
                     <textarea id="lyrics" rows="17" name="lyrics" required><?=$music->lyrics?></textarea>
                     <div class="submit"><input type="submit" value="Save"></div>
                 </form>

@@ -14,7 +14,7 @@
     background-image: linear-gradient(to right, rgb(252, 194, 191), rgb(197, 232, 226));
 }
 
-.logo {
+.logo-pc, .logo-phone {
     text-decoration: none;
     text-align: center;
     font-size: 25px;
@@ -22,6 +22,14 @@
     font-family: 'Palette Mosaic', cursive;
     cursor: pointer;
     padding-left: 80px;
+}
+
+#Menu {
+    display: none;
+}
+
+.logo-phone {
+    display: none;
 }
 
 .navbar ul {
@@ -43,4 +51,44 @@
 #icon {
     width: 80px;
     cursor: pointer;
+}
+
+/*Phone*/
+@media only screen and (max-width: 600px) {
+    #Menu {
+        display: block;
+        width: 40px;
+        margin-right: 10px;
+    }
+
+    ul {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        background: #333333;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.5s;
+        z-index: 1;
+    }
+
+    .navbar ul li {
+         display: block;
+         margin-right: 50px;
+         margin-top: 10px;
+         margin-bottom: 10px;
+     }
+
+    .navbar ul li a {
+        color: #ffffff;
+    }
+
+    .logo-pc {
+        display: none;
+    }
+
+    .logo-phone {
+        display: block;
+        padding-left: 40px;
+    }
 }
