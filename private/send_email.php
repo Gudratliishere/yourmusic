@@ -9,7 +9,12 @@ require '../libs/PHPMailer-master/src/SMTP.php';
 
 function generate_activation_code()
 {
-    $code = bin2hex(random_bytes(16));
+    try {
+        $code = bin2hex(random_bytes(16));
+    } catch (\Exception $e) {
+        echo $e;
+        $code = "222222222222222222222222";
+    }
 
     return $code;
 }

@@ -34,7 +34,7 @@ if ($profile_photo != '') {
 //Password changing
 if ($change_password == true) {
     if (verify_user_password($old_password, $user->password)) {
-        check_match_with_used_passwords($old_password_dao, $user, $new_password);
+        check_match_with_used_passwords($user, $new_password);
         $user->password = password_hash($new_password, PASSWORD_DEFAULT);
     }
     $old_password_dao->add($user->id, $user->password);
@@ -66,8 +66,9 @@ function verify_user_password($old_password, $user_password)
     }
 }
 
-function check_match_with_used_passwords($old_password_dao, $user, $new_password)
+function check_match_with_used_passwords($user, $new_password)
 {
+    global $old_password_dao;
     $array = $old_password_dao->get_old_passwords($user->id);
     foreach ($array as $old) {
         if (password_verify($new_password, $old)) {

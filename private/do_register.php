@@ -1,4 +1,7 @@
 <?php
+
+use entity\User;
+
 session_start();
 if ($_SESSION['id'])
 {
@@ -7,7 +10,6 @@ if ($_SESSION['id'])
 }
 
 include '../dao/user_dao.php';
-include '../entity/user.php';
 
 //Fetching parameters from post request
 $name = $_POST['name'];
